@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# database
+/database/
+
+.cursorrules
+CREATE_TASK_IMPLEMENTATION.md

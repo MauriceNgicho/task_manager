@@ -1,0 +1,80 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+description: Core rules, conventions, and architectural guidelines for the AI-Powered Task Manager App. globs: alwaysApply: true
+Project Overview: AI-Powered Task Manager App
+You are an expert full-stack developer working on the Task Manager App codebase. Your primary goal is to build a full-stack web application that allows users to manage, organize, and get AI-powered insights for their tasks. The app must include features for task creation (CRUD), categorization, real-time updates, notifications, and user authentication.
+
+Adhere strictly to the rules, patterns, and conventions outlined in this document to ensure code quality, consistency, and maintainability.
+
+Technology Stack
+The project uses the following technologies. Do not introduce new libraries or frameworks without explicit instruction.
+
+Language: TypeScript
+
+Main Framework: Next.js (App Router)
+
+Database & Auth: Supabase
+
+Styling: Tailwind CSS with shadcn/ui components
+
+State Management: Primarily Server Components for server state. Use Zustand or useState for local component state in Client Components.
+
+API Communication: Use Next.js Server Actions for mutations (creating, updating, deleting tasks). Fetch data in Server Components using the Supabase client.
+
+AI Integration: Use the Vercel AI SDK to handle all AI model interactions.
+
+Utility Libraries: Use Zod for schema validation.
+
+Architecture & Code Style
+Directory Structure: Follow the standard Next.js App Router structure.
+
+/app for routes and pages, organized with route groups like (main) and (auth).
+
+/components/ui for shadcn/ui components.
+
+/components/ for custom, reusable components.
+
+/lib for Supabase client setup, utility functions, Server Actions, and AI helpers.
+
+lib/supabase/client.ts and lib/supabase/server.ts should be used for client-side and server-side Supabase interactions respectively.
+
+Component Design: Prefer Server Components for fetching and displaying data. Use Client Components ('use client') only when interactivity (hooks, event listeners) or real-time updates are required.
+
+Naming Conventions: Component files should be PascalCase (e.g., TaskCard.tsx). Utility and action functions should be camelCase (e.g., createTask.ts). Database table and column names should be snake_case (e.g., is_completed).
+
+Error Handling: Use try/catch blocks within Server Actions and Route Handlers. Use Next.js error.tsx files for handling errors within route segments.
+
+API Keys & Secrets: Never hardcode secrets. Use environment variables (.env.local) for Supabase URL/keys and AI API keys. Access them via process.env.
+
+Code Patterns to Follow
+Data Mutations: Use a form that calls a Server Action to handle task creation, updates, and deletion. This keeps client-side JavaScript minimal and ensures security.
+
+AI Integration: All AI logic, including API calls, must be handled in a Server Action or a Route Handler to prevent exposing API keys on the client.
+
+Data Fetching: Do not fetch data on the client side using useEffect and useState in a page component. Fetch data directly in a Server Component and pass it down as props to Client Components.
+
+Real-time Updates: Use Supabase's real-time subscriptions within a Client Component to listen for changes to tasks and provide a dynamic, collaborative feel.
+
+Validation: Use Zod to validate all form data and API inputs on both the client and server.
+
+Verification Checklist
+Before finalizing your response, you MUST verify the following:
+
+Does the code use the Next.js App Router and Server Components for data fetching?
+
+Are Server Actions used for data mutations?
+
+Is the Supabase client used for all database and authentication interactions?
+
+Are AI integrations handled server-side to protect API keys?
+
+Are shadcn/ui components used for the UI where appropriate?
+
+Are Supabase keys and other secrets loaded from environment variables and not hardcoded?
+
+Are Supabase table and column names in snake_case?
+
+This video provides a deep dive into using Supabase and Server Components with Next.js 14 for a task management application.
