@@ -43,5 +43,5 @@ next-env.d.ts
 # database
 /database/
 
-.cursorrules
 CREATE_TASK_IMPLEMENTATION.md
+.cursor/
